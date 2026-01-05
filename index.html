@@ -11,9 +11,23 @@
 
 
         //create a function gameEngine() that compares three possible inputs. use userSelection and computerSelection as the parameters
-        // function gameEngine(userSelection, computerSelection) {
-        //     if 
-        // }
+        function gameEngine(userSelection, computerSelection) {
+            if (userSelection === computerSelection) {
+                alert("It's a draw. Play again");
+            }  else if ((userSelection === "Rock") && (computerSelection === "Paper")) {
+                alert("Computer chose paper. You lost");
+            }  else if ((userSelection === "Rock") && (computerSelection === "Scissors")) {
+                alert("Computer chose Scissors. You won.")
+            }  else if ((userSelection === "Paper") && (computerSelection === "rock")) {
+                alert("Computer chose rock. You won.")
+            }  else if ((userSelection === "Paper") && (computerSelection === "Scissors")) {
+                alert("Computer chose Scissors. You lost.")
+            }  else if ((userSelection === "Scissors") && (computerSelection === "Rock")) {
+                alert("Computer chose rock. You lose")
+            }  else {
+                alert("Computer chose paper. You win")
+            }
+        }
            //rock is greater than scissors, but weaker than paper.
            //paper is greater than rock, but weaker than scissors.
            //scissors is greater than paper, but weaker than rock.
@@ -38,6 +52,7 @@
         //test trueComputerInput
         console.log(trueComputerInput);
         //call the aforementioned function using the selections as the arguments.
+        gameEngine(trueUserInput, trueComputerInput)
         //alert the output of the function
         
        
