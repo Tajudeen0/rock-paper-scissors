@@ -31,14 +31,14 @@ alert("Whoever wins more rounds wins overall");
 function askUserInput() {
     let userChoice = prompt("Choose between Rock, Paper, or Scissors");
     let trueUserInput = userChoice.charAt(0).toUpperCase() + userChoice.slice(1).toLowerCase();
-    // console.log(trueUserInput);
+    
     return trueUserInput;
 }
 
 function askComputerInput() {
      let trueComputerInput;
     let computerChoice = Math.floor(Math.random() * 3);
-    // console.log(computerChoice)
+    
       if (computerChoice === 0) {
             trueComputerInput = "Rock";
         }  else if (computerChoice === 1) {
@@ -46,7 +46,7 @@ function askComputerInput() {
         }  else {
             trueComputerInput = "Scissors";
         };
-    // console.log(trueComputerInput);
+    
     return trueComputerInput;
 }
 
@@ -69,7 +69,7 @@ if (finalGameCount < 3) {
     alert("You won the game")
 }
 
-//gameEngine(askUserInput(),askComputerInput());
+
 
 //get the result from the gameEngine return.
 //store the return value somewhere
