@@ -26,6 +26,7 @@
         //text usableInput
         console.log(trueUserInput);
         // let the computer make a random choice 
+        let trueComputerInput;
         let computerChoice = Math.floor(Math.random() * 3);
         //test computer input
         console.log(computerChoice);
@@ -41,5 +42,5 @@
         console.log(trueComputerInput);
         //call the aforementioned function using the selections as the arguments.
         gameEngine(trueUserInput, trueComputerInput)
-        //alert the output of the function
+        //repeat the game multiple five times
         
