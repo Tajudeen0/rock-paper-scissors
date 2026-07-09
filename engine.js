@@ -15,8 +15,7 @@
             }  else {
                 alert("Computer chose paper. You win")
             }
-        }
-           //rock is greater than scissors, but weaker than paper.
+        } //rock is greater than scissors, but weaker than pape
            //paper is greater than rock, but weaker than scissors.
            //scissors is greater than paper, but weaker than rock.
         //ask user to select between rock, paper, or scissors and store the user's selection in a container.
@@ -41,6 +40,11 @@
         //test trueComputerInput
         console.log(trueComputerInput);
         //call the aforementioned function using the selections as the arguments.
-        gameEngine(trueUserInput, trueComputerInput)
+        //gameEngine(trueUserInput, trueComputerInput);
         //repeat the game multiple five times
+        for (i = 0; 1 <= 4; i++) {
+            gameEngine(trueUserInput,trueComputerInput);
+
+        }
         
+

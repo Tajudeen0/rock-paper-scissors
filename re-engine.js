@@ -1,80 +1,111 @@
-alert("You're going to play 5 rounds against the computer.");
-alert("Whoever wins more rounds wins overall");
 
-
- 
- function gameEngine(userSelection, computerSelection) {
-            if (userSelection === computerSelection) {
-                alert("this was a draw, play again");
-                return gameEngine(askUserInput(),askComputerInput())
-            }  else if ((userSelection === "Rock") && (computerSelection === "Paper")) {
-                alert("Computer chose paper. You lost");
-                return 0;
-            }  else if ((userSelection === "Rock") && (computerSelection === "Scissors")) {
-                alert("Computer chose Scissors. You won.")
-                return 1;
-            }  else if ((userSelection === "Paper") && (computerSelection === "rock")) {
-                alert("Computer chose rock. You won.")
-                return 1;
-            }  else if ((userSelection === "Paper") && (computerSelection === "Scissors")) {
-                alert("Computer chose Scissors. You lost.")
-                return 0;
-            }  else if ((userSelection === "Scissors") && (computerSelection === "Rock")) {
-                alert("Computer chose rock. You lose")
-                return 0;
-            }  else {
-                alert("Computer chose paper. You win")
-                return 1;
-            }
-        }
-
-function askUserInput() {
-    let userChoice = prompt("Choose between Rock, Paper, or Scissors");
-    let trueUserInput = userChoice.charAt(0).toUpperCase() + userChoice.slice(1).toLowerCase();
-    
-    return trueUserInput;
-}
-
-function askComputerInput() {
-     let trueComputerInput;
-    let computerChoice = Math.floor(Math.random() * 3);
-    
-      if (computerChoice === 0) {
-            trueComputerInput = "Rock";
-        }  else if (computerChoice === 1) {
-            trueComputerInput = "Paper";
-        }  else {
-            trueComputerInput = "Scissors";
-        };
-    
-    return trueComputerInput;
-}
-
-let value1 = gameEngine(askUserInput(),askComputerInput());
-console.log(value1);
-let value2 = gameEngine(askUserInput(),askComputerInput());
-console.log(value2);
-let value3 = gameEngine(askUserInput(),askComputerInput());
-console.log(value3);
-let value4 = gameEngine(askUserInput(),askComputerInput());
-console.log(value4);
-let value5 = gameEngine(askUserInput(),askComputerInput());
-console.log(value5);
-
-let finalGameCount = value1 + value2 + value3 + value4 + value5;
-
-if (finalGameCount < 3) {
-    alert("You lost the game ")
-} else {
-    alert("You won the game")
-}
+//variables
+const picks = ["rock", "paper", "scissors"];
+let usrIn;
+let comIn;
+let usrScr = 0;    
+let comScr = 0;
+let drawCount = 0;
+let winner;
 
 
 
-//get the result from the gameEngine return.
-//store the return value somewhere
-//repeat 4 timees with different container names
-//add the values together,
-//if values not more than a figure, alert "you lost" else Alert "you won".
 
+
+
+//create the buttons
+const rock = document.createElement("button");
+rock.id = "rck";
+rock.textContent = "rock";
+const paper = document.createElement("button");
+paper.id = "ppr";
+paper.textContent = 'paper'
+const scissors = document.createElement("button");
+scissors.id = "scrs";
+scissors.textContent = 'scissors';
+
+
+
+
+//append the buttons to the document
+document.body.appendChild(rock);
+document.body.appendChild(paper);
+document.body.appendChild(scissors);
+
+
+
+//add event listeners
+rock.addEventListener('click', e => {
+    let usrIn = "rock";
+    gameLogic(usrIn);
+});
+
+paper.addEventListener('click', e => {
+    let usrIn = "paper";
+    gameLogic(usrIn);
+});
+
+scissors.addEventListener('click', e => {
+    let usrIn = "scissors";
+    gameLogic(usrIn);
+});
+
+
+
+
+
+
+
+
+
+//create game logic 
+function gameLogic(usrIn) {
+        results.textContent = ""
+
+    comIn = picks[getRandomInt(3)];
+    if (usrIn == comIn) {
+        drawCount += 1;
+    }
+        else if ((usrIn == "paper" && comIn == "rock") || (usrIn == "rock" && comIn == "scissors") || (usrIn == "scissors" && comIn == "paper")) {
+        usrScr += 1;
         
+    }   else {
+        comScr += 1;
+    }
+    console.log(usrIn == comIn);
+    console.log(comIn,usrIn)
+    console.log(drawCount)
+    console.log(comScr)
+    console.log(usrScr)
+    comChoice.textContent = "computer chose " + comIn + "."
+    scoreCard.textContent = "The current score is: Computer (" + comScr + "), and you (" + usrScr +").";
+    if ((comScr === 5) || (usrScr === 5) ) {
+        results.textContent = (comScr < usrScr? "you won. Click any button to restart" : "You lost. Click any button to restart");
+        comScr = 0;
+        usrScr = 0;
+        drawCount = 0;
+        ;
+    }
+    
+} 
+
+function getRandomInt(max) {
+  return Math.floor(Math.random() * max);
+}
+
+//display results
+let main = document.createElement("div");
+main.classList.add("main");
+
+let comChoice = document.createElement("p")
+comChoice.classList.add("comChoice")
+
+let scoreCard = document.createElement("p");
+scoreCard.classList.add("score");
+
+let results = document.createElement("h3");
+
+document.body.appendChild(main);
+main.appendChild(comChoice)
+main.appendChild(scoreCard)
+main.appendChild(results)
